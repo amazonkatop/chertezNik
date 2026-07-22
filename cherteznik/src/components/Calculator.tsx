@@ -20,8 +20,8 @@ export function Calculator({ area, setArea }: CalculatorProps) {
   const animatedPrice = useAnimatedValue(rawPrice, 260);
 
   return (
-    <div className="px-4 mb-5">
-      <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
+    <div className="px-4 lg:px-0 mb-5">
+      <div className="bg-white rounded-2xl p-5 lg:p-6 border border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
         <p className="text-[13px] font-medium text-gray-400 mb-4 tracking-wide uppercase">
           Площадь квартиры
         </p>

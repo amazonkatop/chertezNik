@@ -48,8 +48,8 @@ export function AuthBlock({ onAuthenticated }: AuthBlockProps) {
   }, [code, onAuthenticated]);
 
   return (
-    <div className="px-4 mb-8">
-      <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-4">
+    <div className="px-4 lg:px-0 mb-8">
+      <div className="bg-white rounded-2xl p-5 lg:p-6 shadow-sm border border-gray-100 flex flex-col gap-4">
         
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

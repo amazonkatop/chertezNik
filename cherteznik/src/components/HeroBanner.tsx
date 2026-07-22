@@ -9,11 +9,22 @@ interface HeroBannerProps {
 
 export function HeroBanner({
   title = 'Профессиональная разработка чертежей',
-  height = 280,
+  height,
   badge,
 }: HeroBannerProps) {
+  const isCompact = height !== undefined && height <= 180;
+
   return (
-    <div className="w-full flex-shrink-0 relative overflow-hidden" style={{ height }}>
+    <div
+      className={`w-full flex-shrink-0 relative overflow-hidden rounded-none lg:rounded-2xl ${
+        height === undefined
+          ? 'h-[280px] lg:h-[420px] xl:h-[480px]'
+          : isCompact
+            ? 'h-[140px] lg:h-[180px]'
+            : ''
+      }`}
+      style={height !== undefined && !isCompact ? { height } : undefined}
+    >
       {/* Image fills the full block */}
       <img
         src={heroHandImg}
@@ -22,8 +33,8 @@ export function HeroBanner({
       />
 
       {/* Title overlays the dark-navy top of the image */}
-      <div className="absolute inset-x-0 top-0 px-5 pt-4 pb-12 bg-gradient-to-b from-[#1B3B6F]/85 to-transparent text-center pointer-events-none">
-        <p className="text-white font-extrabold text-[17px] tracking-[0.04em] uppercase leading-tight drop-shadow-sm">
+      <div className="absolute inset-x-0 top-0 px-5 pt-4 lg:pt-7 pb-12 lg:pb-20 bg-gradient-to-b from-[#1B3B6F]/85 to-transparent text-center pointer-events-none">
+        <p className="text-white font-extrabold text-[17px] lg:text-[26px] xl:text-[30px] tracking-[0.04em] uppercase leading-tight drop-shadow-sm">
           {title}
         </p>
       </div>

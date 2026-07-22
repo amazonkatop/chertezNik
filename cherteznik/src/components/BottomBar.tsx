@@ -10,31 +10,32 @@ export function State1BottomBar({ onBook }: State1BottomBarProps) {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-100 px-4 pt-3 pb-safe z-30 max-w-[430px] mx-auto w-full">
+    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-100 px-4 lg:px-8 pt-3 lg:py-3 pb-safe z-30 max-w-[430px] lg:max-w-none mx-auto w-full">
+      <div className="lg:max-w-7xl lg:mx-auto lg:flex lg:items-center lg:gap-8">
 
       {/* Consent checkbox */}
-      <label className="flex items-start gap-2.5 cursor-pointer select-none mb-3">
+      <label className="flex items-start lg:items-center gap-2.5 cursor-pointer select-none mb-3 lg:mb-0 lg:flex-1">
         <input
           type="checkbox"
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
-          className="mt-0.5 w-4 h-4 flex-shrink-0 accent-primary cursor-pointer rounded"
+          className="mt-0.5 lg:mt-0 w-4 h-4 flex-shrink-0 accent-primary cursor-pointer rounded"
           data-testid="checkbox-agree"
         />
-        <span className="text-[11px] text-gray-400 leading-snug">
+        <span className="text-[11px] lg:text-[12px] text-gray-400 leading-snug lg:max-w-[560px]">
           Я согласен, что чертежи создаются по готовым техническим стандартам платформы для
           сохранения быстрых сроков. Индивидуальные пожелания вношу самостоятельно со строителями.
         </span>
       </label>
 
       {/* CTA row */}
-      <div className="flex gap-2.5 items-center pb-1">
+      <div className="flex gap-2.5 items-center pb-1 lg:pb-0 lg:flex-shrink-0">
         <button
           onClick={onBook}
           disabled={!agreed}
-          className={`flex-grow h-[58px] rounded-[17px] font-bold text-[14px] flex flex-col items-center justify-center transition-all duration-200 ${
+          className={`flex-grow lg:flex-grow-0 lg:w-[340px] h-[58px] rounded-[17px] font-bold text-[14px] flex flex-col items-center justify-center transition-all duration-200 ${
             agreed
-              ? 'bg-primary text-white active:scale-[0.98]'
+              ? 'bg-primary text-white active:scale-[0.98] lg:hover:bg-primary/90'
               : 'bg-gray-100 text-gray-400 cursor-not-allowed'
           }`}
           data-testid="button-book"
@@ -98,6 +99,7 @@ export function State1BottomBar({ onBook }: State1BottomBarProps) {
             </Drawer.Content>
           </Drawer.Portal>
         </Drawer.Root>
+      </div>
       </div>
     </div>
   );

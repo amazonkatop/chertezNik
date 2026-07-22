@@ -50,7 +50,7 @@ export function StyleSelector() {
   return (
     <div className="w-full mt-0 mb-0">
       {/* Three equal-width cards: label on top, image below */}
-      <div className="flex gap-[5px] px-4 w-full">
+      <div className="flex gap-[5px] lg:gap-4 px-4 lg:px-0 w-full">
         {STYLES.map((style) => {
           const isActive = activeId === style.id;
           return (
@@ -58,20 +58,20 @@ export function StyleSelector() {
               key={style.id}
               onClick={() => setActiveId(isActive ? null : style.id)}
               data-testid={`card-style-${style.id}`}
-              className={`flex-1 flex flex-col overflow-hidden rounded-[10px] border-2 transition-all duration-200 ${
-                isActive ? 'border-primary' : 'border-transparent'
+              className={`flex-1 flex flex-col overflow-hidden rounded-[10px] lg:rounded-2xl border-2 transition-all duration-200 ${
+                isActive ? 'border-primary' : 'border-transparent lg:hover:border-gray-200'
               }`}
             >
               {/* Label — fixed height so all cards stay uniform */}
               <div
-                className={`h-[26px] flex items-center justify-center px-1 bg-white text-[9px] font-extrabold tracking-widest ${
+                className={`h-[26px] lg:h-[38px] flex items-center justify-center px-1 bg-white text-[9px] lg:text-[13px] font-extrabold tracking-widest ${
                   isActive ? 'text-primary' : 'text-gray-600'
                 }`}
               >
                 {style.name}
               </div>
               {/* Photo — fixed height, fills the card */}
-              <div className="w-full h-[88px] overflow-hidden">
+              <div className="w-full h-[88px] lg:h-[220px] xl:h-[260px] overflow-hidden">
                 <img
                   src={style.img}
                   alt={style.name}
@@ -86,13 +86,13 @@ export function StyleSelector() {
 
       {/* Expanded accordion — zero height when closed, no layout impact */}
       <div
-        className={`overflow-hidden transition-all duration-300 px-4 mt-2 ${
+        className={`overflow-hidden transition-all duration-300 px-4 lg:px-0 mt-2 lg:mt-4 ${
           activeId ? 'max-h-[640px] mb-3' : 'max-h-0 mb-0'
         }`}
       >
         {activeStyle && (
-          <div className="bg-white rounded-2xl p-4 border border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.05)]">
-            <ul className="text-[13px] text-gray-600 mb-4 space-y-1.5 list-disc pl-4">
+          <div className="bg-white rounded-2xl p-4 lg:p-6 border border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.05)]">
+            <ul className="text-[13px] lg:text-[15px] text-gray-600 mb-4 space-y-1.5 list-disc pl-4 lg:columns-2">
               {activeStyle.desc.map((d, i) => (
                 <li key={i} className="pl-1">{d}</li>
               ))}

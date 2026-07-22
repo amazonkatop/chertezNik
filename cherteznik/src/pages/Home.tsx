@@ -31,23 +31,38 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen md:bg-slate-100 md:flex md:items-center md:justify-center md:py-8">
-      <div className="min-h-[100dvh] md:min-h-[800px] w-full bg-white relative font-sans text-gray-900 mx-auto max-w-[430px] md:rounded-[2rem] shadow-2xl overflow-hidden flex flex-col">
+    <div className="min-h-screen md:bg-slate-100 md:flex md:items-center md:justify-center md:py-8 lg:bg-slate-50 lg:block lg:py-0">
+      <div className="min-h-[100dvh] md:min-h-[800px] lg:min-h-screen w-full bg-white relative font-sans text-gray-900 mx-auto max-w-[430px] md:rounded-[2rem] md:shadow-2xl lg:max-w-none lg:rounded-none lg:shadow-none overflow-hidden lg:overflow-visible flex flex-col">
         <Header />
         
         <DevSwitcher currentState={appState} onStateChange={setAppState} />
 
-        <main className="flex-grow pt-16 pb-[100px] overflow-y-auto no-scrollbar scroll-smooth">
+        <main className="flex-grow pt-16 lg:pt-[72px] pb-[100px] lg:pb-28 overflow-y-auto no-scrollbar scroll-smooth">
           {appState === 'pre-payment' && (
             <div className="animate-in fade-in duration-500">
-              <StyleSelector />
-              <HeroBanner />
-              <Calculator area={area} setArea={setArea} />
-              <AuthBlock onAuthenticated={handleAuthenticated} />
-              <TrustBar />
+              <div className="lg:max-w-7xl lg:mx-auto lg:px-8 lg:pt-6">
+                <StyleSelector />
+
+                <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:mt-6 lg:items-start">
+                  <div className="lg:col-span-7 lg:space-y-6">
+                    <HeroBanner />
+                    <div className="hidden lg:block">
+                      <TrustBar />
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-0">
+                    <Calculator area={area} setArea={setArea} />
+                    <AuthBlock onAuthenticated={handleAuthenticated} />
+                  </div>
+                </div>
+
+                <div className="lg:hidden">
+                  <TrustBar />
+                </div>
+              </div>
               
-              {/* Dummy space so content doesn't hide behind bottom bar */}
-              <div className="h-6"></div>
+              <div className="h-6 lg:h-0" />
 
               <State1BottomBar onBook={() => setIsBookingOpen(true)} />
               <BookingDrawer 
@@ -58,14 +73,16 @@ export default function Home() {
             </div>
           )}
 
-          {appState === 'stage-a' && <StageA />}
-          {appState === 'stage-b' && <StageB area={area} />}
-          {appState === 'stage-c' && <StageC />}
-          {appState === 'stage-d' && <StageD />}
+          <div className="lg:max-w-4xl lg:mx-auto lg:px-8 lg:w-full">
+            {appState === 'stage-a' && <StageA />}
+            {appState === 'stage-b' && <StageB area={area} />}
+            {appState === 'stage-c' && <StageC />}
+            {appState === 'stage-d' && <StageD />}
+          </div>
 
           {/* SEO Block - Visually hidden / scrolled way down, only accessible to crawlers or heavy scrollers */}
           {appState === 'pre-payment' && (
-            <div className="mt-20 px-4 py-8 bg-gray-50 border-t border-gray-100 text-xs text-gray-400 pb-32">
+            <div className="mt-20 px-4 lg:px-8 py-8 bg-gray-50 border-t border-gray-100 text-xs text-gray-400 pb-32 lg:max-w-7xl lg:mx-auto">
               <h1 className="font-bold text-gray-600 mb-2">Рабочие чертежи для самостоятельного ремонта квартир</h1>
               <p className="mb-4 leading-relaxed">
                 Сервис Чертёжник.рф предоставляет технические чертежи для квартира эконом класса. Идеально подходит, если вы планируете самостоятельный ремонт без дизайнера. Точный план квартиры и рабочие чертежи помогут избежать ошибок строителей.
