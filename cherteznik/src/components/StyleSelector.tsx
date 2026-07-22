@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import loftImg     from '@/assets/loft-interior.jpg';
+import minimalImg     from '@/assets/minimalism-interior.jpg';
 import scandiImg   from '@/assets/scandi-interior.jpg';
 import { FileText, AlertCircle } from 'lucide-react';
 
@@ -7,7 +8,7 @@ const STYLES = [
   {
     id: 'minimal',
     name: 'МИНИМАЛИЗМ',
-    img: '@/assets/minimalism-interior.jpg',
+    img: minimalImg,
     desc: [
       'Обои под покраску',
       'Пол кварцвинил',
