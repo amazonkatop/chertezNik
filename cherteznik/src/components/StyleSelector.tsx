@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classicImg  from '@/assets/classic-interior.jpg';
+import minimalismImg  from '@/assets/minimalism-interior.jpg';
 import loftImg     from '@/assets/loft-interior.jpg';
 import scandiImg   from '@/assets/scandi-interior.jpg';
 import { FileText, AlertCircle } from 'lucide-react';
